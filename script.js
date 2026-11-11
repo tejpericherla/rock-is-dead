@@ -5,7 +5,7 @@
 // ---------- SETTINGS: paste your Web3Forms access key here ----------
 // Get a free key at https://web3forms.com (enter your email, and the key arrives in your inbox).
 // Every registration will then be emailed to that address.
-const WEB3FORMS_ACCESS_KEY = 'YOUR_ACCESS_KEY_HERE';
+const WEB3FORMS_ACCESS_KEY = '5bed0cf0-f107-4446-bd63-1158b8f39245';
 
 
 // ---------- 1. Registration form ----------

@@ -5,6 +5,20 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Rock is Dead — Long live the night</title>
   <meta name="description" content="Concerts, parties and nights you won't forget. Register for the next Rock is Dead event.">
+  <meta name="theme-color" content="#070707">
+
+  <!-- Tab icon (favicon) -->
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+
+  <!-- Share preview: what WhatsApp, iMessage, Instagram etc. show when someone pastes the link -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://tejpericherla.github.io/rock-is-dead/">
+  <meta property="og:title" content="Rock is Dead — Long live the night">
+  <meta property="og:description" content="Concerts, parties and nights you won't forget. Get on the list.">
+  <meta property="og:image" content="https://tejpericherla.github.io/rock-is-dead/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
 
   <!-- Fonts: Anton (huge poster headings), Inter (body text), Space Mono (small "ticket" details) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -24,7 +38,10 @@
       <nav class="nav" id="nav">
         <a href="#events">Events</a>
         <a href="#about">What we do</a>
+        <a href="#past">Past nights</a>
         <a href="#faq">FAQ</a>
+        <!-- Only shown inside the phone menu (the header button is hidden on phones) -->
+        <a href="#register" class="nav__register">Register →</a>
       </nav>
       <a href="#register" class="btn btn--small">Register</a>
       <button class="menu-btn" id="menuBtn" aria-label="Open menu" aria-expanded="false">
@@ -53,6 +70,17 @@
           <a href="#register" class="btn">Get on the list</a>
           <a href="#events" class="btn btn--ghost">See what's coming</a>
         </div>
+
+        <!-- Countdown to the next event (filled in by script.js, hidden if nothing is coming up) -->
+        <div class="countdown reveal" id="countdown" hidden>
+          <p class="countdown__label">Next up: <strong id="countdownName"></strong></p>
+          <div class="countdown__clock" aria-live="off">
+            <div><strong id="cdDays">00</strong><span>days</span></div>
+            <div><strong id="cdHours">00</strong><span>hrs</span></div>
+            <div><strong id="cdMins">00</strong><span>min</span></div>
+            <div><strong id="cdSecs">00</strong><span>sec</span></div>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -60,13 +88,16 @@
     <div class="marquee" aria-hidden="true">
       <div class="marquee__track">
         <span>ROCK IS DEAD</span><span>★</span><span>LONG LIVE THE NIGHT</span><span>★</span>
-        <span>CONCERTS</span><span>★</span><span>PARTIES</span><span>★</span><span>HALLOWEEN</span><span>★</span>
+        <span>CONCERTS</span><span>★</span><span>PARTIES</span><span>★</span><span>CHRISTMAS EVE</span><span>★</span><span>NEW YEAR'S EVE</span><span>★</span>
         <span>ROCK IS DEAD</span><span>★</span><span>LONG LIVE THE NIGHT</span><span>★</span>
-        <span>CONCERTS</span><span>★</span><span>PARTIES</span><span>★</span><span>HALLOWEEN</span><span>★</span>
+        <span>CONCERTS</span><span>★</span><span>PARTIES</span><span>★</span><span>CHRISTMAS EVE</span><span>★</span><span>NEW YEAR'S EVE</span><span>★</span>
       </div>
     </div>
 
-    <!-- ===== Upcoming events (placeholders: edit these with your real events) ===== -->
+    <!-- ===== Upcoming events =====
+         DEMO DETAILS: edit these with your real events.
+         data-date = when the event starts (year-month-dayThour:minute). script.js uses it to
+         run the countdown and to hide the event automatically once it's over. -->
     <section class="section" id="events">
       <div class="container">
         <div class="section__head reveal">
@@ -74,29 +105,45 @@
           <h2 class="title">The next nights</h2>
         </div>
 
-        <ol class="events">
-          <li class="event reveal">
+        <ol class="events" id="eventList">
+          <li class="event reveal" data-date="2026-12-24T21:00" data-name="Christmas Eve Party">
             <div class="event__date"><span>DEC</span><strong>24</strong></div>
             <div class="event__info">
               <h3>Christmas Eve Party</h3>
               <p>Silent night? Not here. Loud music, mulled drinks and a DJ till late. Ugly sweaters strongly encouraged.</p>
+              <ul class="event__meta">
+                <li>9 PM – late</li>
+                <li>East Side (secret warehouse)</li>
+                <li>Free with registration</li>
+                <li>18+</li>
+              </ul>
               <span class="tag">Party</span>
             </div>
             <a href="#register" class="btn btn--ghost btn--small" data-event="Christmas Eve Party — Dec 24">Register</a>
           </li>
 
-          <li class="event reveal">
+          <li class="event reveal" data-date="2026-12-31T22:00" data-name="Dead Year's Eve">
             <div class="event__date"><span>DEC</span><strong>31</strong></div>
             <div class="event__info">
               <h3>Dead Year's Eve</h3>
               <p>Bury 2026 properly. One last loud night, a midnight countdown, confetti and chaos. Dress to impress (or to haunt).</p>
+              <ul class="event__meta">
+                <li>10 PM – 4 AM</li>
+                <li>Downtown (secret rooftop)</li>
+                <li>$15 at the door</li>
+                <li>21+</li>
+              </ul>
               <span class="tag">Party</span>
             </div>
             <a href="#register" class="btn btn--ghost btn--small" data-event="Dead Year's Eve — Dec 31">Register</a>
           </li>
-
         </ol>
-        <p class="note reveal">Locations are revealed to registered guests 48 hours before each event.</p>
+
+        <!-- Shown by script.js only when every event above has already happened -->
+        <p class="events__empty" id="eventsEmpty" hidden>
+          No nights announced right now. <a href="#register">Register</a> and you'll hear about the next one first.
+        </p>
+        <p class="note reveal">Exact locations are revealed to registered guests 48 hours before each event.</p>
       </div>
     </section>
 
@@ -122,13 +169,48 @@
           <article class="card reveal">
             <span class="card__num">03</span>
             <h3>Themed nights</h3>
-            <p>Halloween, New Year's and whatever weird idea we have next.</p>
+            <p>Christmas Eve, New Year's and whatever weird idea we have next.</p>
           </article>
           <article class="card reveal">
             <span class="card__num">04</span>
             <h3>Whatever's next</h3>
             <p>Pop-ups, screenings, warehouse surprises. Register to hear first.</p>
           </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Past nights =====
+         Poster-style tiles made with CSS. Later you can swap each tile for a real photo:
+         <figure class="poster"><img src="photos/halloween.jpg" alt="..."></figure> -->
+    <section class="section" id="past">
+      <div class="container">
+        <div class="section__head reveal">
+          <p class="kicker">Past nights</p>
+          <h2 class="title">You missed <span class="outline">these.</span></h2>
+        </div>
+
+        <div class="posters">
+          <figure class="poster poster--orange reveal">
+            <span class="poster__date">OCT 31 · 2026</span>
+            <strong>Dead of Night</strong>
+            <figcaption>Halloween · 400 guests</figcaption>
+          </figure>
+          <figure class="poster poster--red reveal">
+            <span class="poster__date">SEP 13 · 2026</span>
+            <strong>Heartbreak Hotel</strong>
+            <figcaption>Live bands · sold out</figcaption>
+          </figure>
+          <figure class="poster poster--acid reveal">
+            <span class="poster__date">JUL 19 · 2026</span>
+            <strong>Basement Summer</strong>
+            <figcaption>DJ night · till 5 AM</figcaption>
+          </figure>
+          <figure class="poster poster--mono reveal">
+            <span class="poster__date">MAY 02 · 2026</span>
+            <strong>Night One</strong>
+            <figcaption>Where it all started</figcaption>
+          </figure>
         </div>
       </div>
     </section>
@@ -212,16 +294,32 @@
           <p>Registering puts you on the list. We'll email you the details, and how to get in, before each event.</p>
         </details>
         <details class="reveal">
+          <summary>How much does it cost?</summary>
+          <p>It depends on the night. Some are free with registration, others have a small door fee. The price is listed with each event above.</p>
+        </details>
+        <details class="reveal">
+          <summary>Is there an age limit?</summary>
+          <p>Yes. Every event is 18+ or 21+ (shown on each event). Bring a valid photo ID, as no ID means no entry.</p>
+        </details>
+        <details class="reveal">
           <summary>Where are the events?</summary>
-          <p>Locations change and are sent to registered guests 48 hours before the night.</p>
+          <p>Locations change. The area is listed with each event, and the exact address is sent to registered guests 48 hours before the night.</p>
+        </details>
+        <details class="reveal">
+          <summary>Can I bring a friend who hasn't registered?</summary>
+          <p>Yes, just add them under "Guests" when you register so we know to expect them. Walk-ins without a name on the list may not get in on busy nights.</p>
+        </details>
+        <details class="reveal">
+          <summary>What should I bring?</summary>
+          <p>Your ID, your confirmation email and good energy. Coat check is usually available, but travel light.</p>
         </details>
         <details class="reveal">
           <summary>Do I have to dress up?</summary>
-          <p>For themed nights, yes. For Halloween, absolutely. For everything else, wear whatever makes you feel loud.</p>
+          <p>For themed nights, yes, the stranger the better. For everything else, wear whatever makes you feel loud.</p>
         </details>
         <details class="reveal">
           <summary>Can I book Rock is Dead for my own party?</summary>
-          <p>Maybe! Register and tell us about it in the "Anything else?" box, and we'll get back to you.</p>
+          <p>Maybe! Email us at <a href="mailto:hello@example.com">hello@example.com</a> or tell us about it in the "Anything else?" box when you register.</p>
         </details>
       </div>
     </section>
@@ -231,12 +329,35 @@
   <footer class="footer">
     <div class="container footer__inner">
       <a href="#top" class="logo logo--big">ROCK <span>IS</span> DEAD</a>
-      <div class="footer__links">
-        <!-- Add social links here later, e.g. <a href="https://instagram.com/yourname">Instagram</a> -->
-        <a href="#events">Events</a>
-        <a href="#register">Register</a>
-        <a href="#faq">FAQ</a>
+
+      <div class="footer__cols">
+        <div>
+          <p class="footer__heading">Explore</p>
+          <div class="footer__links">
+            <a href="#events">Events</a>
+            <a href="#past">Past nights</a>
+            <a href="#register">Register</a>
+            <a href="#faq">FAQ</a>
+          </div>
+        </div>
+        <div>
+          <!-- DEMO: replace each "#" with your real profile link, e.g. https://instagram.com/yourname -->
+          <p class="footer__heading">Follow</p>
+          <div class="footer__links">
+            <a href="#" aria-label="Instagram (demo link)">Instagram</a>
+            <a href="#" aria-label="TikTok (demo link)">TikTok</a>
+            <a href="#" aria-label="Spotify playlist (demo link)">Spotify</a>
+          </div>
+        </div>
+        <div>
+          <!-- DEMO: example.com is a placeholder address; swap in your real email -->
+          <p class="footer__heading">Contact</p>
+          <div class="footer__links">
+            <a href="mailto:hello@example.com" class="footer__email">hello@example.com</a>
+          </div>
+        </div>
       </div>
+
       <p class="footer__small">© <span id="year"></span> Rock is Dead. Long live the night.</p>
     </div>
   </footer>

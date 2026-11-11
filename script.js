@@ -127,3 +127,64 @@ nav.querySelectorAll('a').forEach((link) =>
 
 // ---------- 5. Current year in the footer ----------
 document.getElementById('year').textContent = new Date().getFullYear();
+
+
+// ---------- 6. Hide events that are already over ----------
+// An event counts as "over" 12 hours after it starts (so it stays up during the night itself).
+const HOURS_AFTER_START = 12;
+const now = new Date();
+const upcoming = []; // events still to come, used by the countdown below
+
+document.querySelectorAll('.event[data-date]').forEach((item) => {
+  const start = new Date(item.dataset.date);
+  const over = now - start > HOURS_AFTER_START * 60 * 60 * 1000;
+
+  if (over) {
+    item.remove();
+    // Also remove it from the "Which event?" dropdown in the form
+    const label = item.querySelector('[data-event]')?.dataset.event;
+    [...eventSelect.options].forEach((option) => {
+      if (option.text === label) option.remove();
+    });
+  } else {
+    upcoming.push({ name: item.dataset.name, start });
+  }
+});
+
+// If nothing is left, show the "No nights announced" message instead
+if (upcoming.length === 0) {
+  document.getElementById('eventList').hidden = true;
+  document.getElementById('eventsEmpty').hidden = false;
+}
+
+
+// ---------- 7. Countdown to the next event ----------
+const nextEvent = upcoming
+  .filter((e) => e.start > now)        // only ones that haven't started yet
+  .sort((a, b) => a.start - b.start)[0]; // earliest first
+
+if (nextEvent) {
+  const countdown = document.getElementById('countdown');
+  const pad = (n) => String(n).padStart(2, '0'); // 7 -> "07"
+
+  document.getElementById('countdownName').textContent = nextEvent.name;
+  countdown.hidden = false;
+
+  function tick() {
+    const msLeft = nextEvent.start - new Date();
+    if (msLeft <= 0) {
+      countdown.querySelector('.countdown__label').textContent = `${nextEvent.name} is happening now 🤘`;
+      countdown.querySelector('.countdown__clock').hidden = true;
+      clearInterval(timer);
+      return;
+    }
+    const secs = Math.floor(msLeft / 1000);
+    document.getElementById('cdDays').textContent = pad(Math.floor(secs / 86400));
+    document.getElementById('cdHours').textContent = pad(Math.floor((secs % 86400) / 3600));
+    document.getElementById('cdMins').textContent = pad(Math.floor((secs % 3600) / 60));
+    document.getElementById('cdSecs').textContent = pad(secs % 60);
+  }
+
+  tick();                               // show the numbers straight away
+  const timer = setInterval(tick, 1000); // then update every second
+}

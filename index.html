@@ -1,0 +1,266 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Rock is Dead — Long live the night</title>
+  <meta name="description" content="Concerts, parties and nights you won't forget. Register for the next Rock is Dead event.">
+
+  <!-- Fonts: Anton (huge poster headings), Inter (body text), Space Mono (small "ticket" details) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- Film-grain texture over the whole page (purely decorative) -->
+  <div class="grain" aria-hidden="true"></div>
+
+  <!-- ===== Header ===== -->
+  <header class="header">
+    <div class="container header__inner">
+      <a href="#top" class="logo">ROCK <span>IS</span> DEAD</a>
+      <nav class="nav" id="nav">
+        <a href="#events">Events</a>
+        <a href="#about">What we do</a>
+        <a href="#faq">FAQ</a>
+      </nav>
+      <a href="#register" class="btn btn--small">Register</a>
+      <button class="menu-btn" id="menuBtn" aria-label="Open menu" aria-expanded="false">
+        <span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <main id="top">
+    <!-- ===== Hero ===== -->
+    <section class="hero">
+      <div class="hero__glow" aria-hidden="true"></div>
+      <div class="container hero__content">
+        <p class="kicker reveal"><span class="live-dot"></span> Concerts · Parties · Whatever's next</p>
+        <h1 class="hero__title reveal">
+          <span class="glitch" data-text="ROCK">ROCK</span>
+          <span class="hero__is">is</span>
+          <span class="glitch glitch--red" data-text="DEAD">DEAD</span>
+        </h1>
+        <p class="hero__tag reveal">Long live the night.</p>
+        <p class="lead reveal">
+          Loud music, dark rooms, strange costumes and people you'll remember.
+          We throw the nights everyone talks about the next morning.
+        </p>
+        <div class="hero__ctas reveal">
+          <a href="#register" class="btn">Get on the list</a>
+          <a href="#events" class="btn btn--ghost">See what's coming</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Scrolling ticker ===== -->
+    <div class="marquee" aria-hidden="true">
+      <div class="marquee__track">
+        <span>ROCK IS DEAD</span><span>★</span><span>LONG LIVE THE NIGHT</span><span>★</span>
+        <span>CONCERTS</span><span>★</span><span>PARTIES</span><span>★</span><span>HALLOWEEN</span><span>★</span>
+        <span>ROCK IS DEAD</span><span>★</span><span>LONG LIVE THE NIGHT</span><span>★</span>
+        <span>CONCERTS</span><span>★</span><span>PARTIES</span><span>★</span><span>HALLOWEEN</span><span>★</span>
+      </div>
+    </div>
+
+    <!-- ===== Upcoming events (placeholders: edit these with your real events) ===== -->
+    <section class="section" id="events">
+      <div class="container">
+        <div class="section__head reveal">
+          <p class="kicker">Upcoming</p>
+          <h2 class="title">The next nights</h2>
+        </div>
+
+        <ol class="events">
+          <li class="event reveal">
+            <div class="event__date"><span>DEC</span><strong>12</strong></div>
+            <div class="event__info">
+              <h3>Frostbite</h3>
+              <p>Live bands + DJ till late. Wear black, bring friends.</p>
+              <span class="tag">Concert</span>
+            </div>
+            <a href="#register" class="btn btn--ghost btn--small" data-event="Frostbite — Dec 12">Register</a>
+          </li>
+
+          <li class="event reveal">
+            <div class="event__date"><span>DEC</span><strong>31</strong></div>
+            <div class="event__info">
+              <h3>Dead Year's Eve</h3>
+              <p>Bury 2026 properly. Countdown, confetti, chaos.</p>
+              <span class="tag">Party</span>
+            </div>
+            <a href="#register" class="btn btn--ghost btn--small" data-event="Dead Year's Eve — Dec 31">Register</a>
+          </li>
+
+          <li class="event reveal">
+            <div class="event__date"><span>FEB</span><strong>14</strong></div>
+            <div class="event__info">
+              <h3>Heartbreak Hotel</h3>
+              <p>An anti-Valentine's night for lovers, loners and everyone in between.</p>
+              <span class="tag">Themed night</span>
+            </div>
+            <a href="#register" class="btn btn--ghost btn--small" data-event="Heartbreak Hotel — Feb 14">Register</a>
+          </li>
+
+          <li class="event event--halloween reveal">
+            <div class="event__date"><span>OCT</span><strong>31</strong></div>
+            <div class="event__info">
+              <h3>Dead of Night <em>— Halloween</em></h3>
+              <p>Our biggest night of the year. Costume contest. No costume, no mercy.</p>
+              <span class="tag tag--orange">Halloween</span>
+            </div>
+            <a href="#register" class="btn btn--ghost btn--small" data-event="Dead of Night (Halloween) — Oct 31">Register</a>
+          </li>
+        </ol>
+        <p class="note reveal">Locations are revealed to registered guests 48 hours before each event.</p>
+      </div>
+    </section>
+
+    <!-- ===== What we do ===== -->
+    <section class="section" id="about">
+      <div class="container">
+        <div class="section__head reveal">
+          <p class="kicker">What we do</p>
+          <h2 class="title">Mostly music.<br><span class="outline">Anything goes.</span></h2>
+        </div>
+
+        <div class="cards">
+          <article class="card reveal">
+            <span class="card__num">01</span>
+            <h3>Concerts</h3>
+            <p>Live bands and DJs in rooms that feel like secrets.</p>
+          </article>
+          <article class="card reveal">
+            <span class="card__num">02</span>
+            <h3>Parties</h3>
+            <p>Big nights, late nights, the kind you plan your month around.</p>
+          </article>
+          <article class="card reveal">
+            <span class="card__num">03</span>
+            <h3>Themed nights</h3>
+            <p>Halloween, New Year's and whatever weird idea we have next.</p>
+          </article>
+          <article class="card reveal">
+            <span class="card__num">04</span>
+            <h3>Whatever's next</h3>
+            <p>Pop-ups, screenings, warehouse surprises. Register to hear first.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Registration form ===== -->
+    <section class="section register" id="register">
+      <div class="container register__grid">
+        <div class="register__intro reveal">
+          <p class="kicker">Get on the list</p>
+          <h2 class="title">Register</h2>
+          <p class="lead lead--left">
+            Tell us who you are and which night you're coming to.
+            We'll send you the details, the location and the dress code.
+          </p>
+          <ul class="perks">
+            <li>First access to every event</li>
+            <li>Secret location drops</li>
+            <li>No spam. Ever.</li>
+          </ul>
+        </div>
+
+        <form class="form reveal" id="registerForm" novalidate>
+          <div class="field">
+            <label for="name">Name</label>
+            <input id="name" name="name" type="text" autocomplete="name" placeholder="Your name" required>
+          </div>
+
+          <div class="field">
+            <label for="email">Email</label>
+            <input id="email" name="email" type="email" autocomplete="email" placeholder="you@example.com" required>
+          </div>
+
+          <div class="field-row">
+            <div class="field">
+              <label for="phone">Phone <span class="optional">(optional)</span></label>
+              <input id="phone" name="phone" type="tel" autocomplete="tel" placeholder="+1 555 000 0000">
+            </div>
+            <div class="field">
+              <label for="guests">Guests</label>
+              <select id="guests" name="guests">
+                <option>Just me</option>
+                <option>+1</option>
+                <option>+2</option>
+                <option>+3 or more</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="field">
+            <label for="event">Which event?</label>
+            <select id="event" name="event">
+              <option>All events (keep me posted)</option>
+              <option>Frostbite — Dec 12</option>
+              <option>Dead Year's Eve — Dec 31</option>
+              <option>Heartbreak Hotel — Feb 14</option>
+              <option>Dead of Night (Halloween) — Oct 31</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label for="message">Anything else? <span class="optional">(optional)</span></label>
+            <textarea id="message" name="message" rows="3" placeholder="Song requests, questions, costume plans…"></textarea>
+          </div>
+
+          <!-- Hidden "honeypot" field: real people never fill it, spam bots do -->
+          <input type="checkbox" name="botcheck" class="honeypot" tabindex="-1" autocomplete="off">
+
+          <button type="submit" class="btn btn--block" id="submitBtn">Count me in</button>
+          <p class="form__msg" id="formMsg" role="status" aria-live="polite"></p>
+        </form>
+      </div>
+    </section>
+
+    <!-- ===== FAQ ===== -->
+    <section class="section" id="faq">
+      <div class="container faq">
+        <div class="section__head reveal">
+          <p class="kicker">Questions</p>
+          <h2 class="title">FAQ</h2>
+        </div>
+        <details class="reveal">
+          <summary>Is registering the same as a ticket?</summary>
+          <p>Registering puts you on the list. We'll email you the details, and how to get in, before each event.</p>
+        </details>
+        <details class="reveal">
+          <summary>Where are the events?</summary>
+          <p>Locations change and are sent to registered guests 48 hours before the night.</p>
+        </details>
+        <details class="reveal">
+          <summary>Do I have to dress up?</summary>
+          <p>For themed nights, yes. For Halloween, absolutely. For everything else, wear whatever makes you feel loud.</p>
+        </details>
+        <details class="reveal">
+          <summary>Can I book Rock is Dead for my own party?</summary>
+          <p>Maybe! Register and tell us about it in the "Anything else?" box, and we'll get back to you.</p>
+        </details>
+      </div>
+    </section>
+  </main>
+
+  <!-- ===== Footer ===== -->
+  <footer class="footer">
+    <div class="container footer__inner">
+      <a href="#top" class="logo logo--big">ROCK <span>IS</span> DEAD</a>
+      <div class="footer__links">
+        <a href="#" aria-label="Instagram">Instagram</a>
+        <a href="#" aria-label="TikTok">TikTok</a>
+        <a href="#register">Register</a>
+      </div>
+      <p class="footer__small">© <span id="year"></span> Rock is Dead. Long live the night.</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
